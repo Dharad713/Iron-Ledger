@@ -1,6 +1,6 @@
-@IronLedger.Api_HostAddress = http://localhost:5112
+@IronLedger.Api_HostAddress = https://localhost:7146
 
-GET {{IronLedger.Api_HostAddress}}/weatherforecast/
+GET {{IronLedger.Api_HostAddress}}/api/
 Accept: application/json
 
 ###
