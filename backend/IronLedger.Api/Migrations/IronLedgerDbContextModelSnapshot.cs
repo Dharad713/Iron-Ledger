@@ -34,9 +34,6 @@ namespace IronLedger.Api.Migrations
                     b.Property<string>("Division")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("MeetId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
