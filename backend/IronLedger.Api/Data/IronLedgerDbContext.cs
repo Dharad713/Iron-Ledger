@@ -9,10 +9,8 @@ public class IronLedgerDbContext : DbContext
     {
     }
 
-    public DbSet<Athlete> Athletes => Set<Athlete>();
-
-    public DbSet<Meet> Meets => Set<Meet>();
-
-    public DbSet<Attempt> Attempts => Set<Attempt>();
+	public DbSet<Athlete> Athletes { get; set; } = null!;
+	public DbSet<Meet> Meets { get; set; } = null!;
+	public DbSet<Attempt> Attempts { get; set; } = null!;
 
 }

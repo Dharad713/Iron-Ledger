@@ -1,6 +1,6 @@
-@IronLedger.Api_HostAddress = https://localhost:7146
+@HostAddress=https://localhost:7146
 
-GET {{IronLedger.Api_HostAddress}}/api/
+GET {{HostAddress}}/api/attempts
 Accept: application/json
 
 ###
