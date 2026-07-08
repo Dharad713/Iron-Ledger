@@ -1,6 +1,163 @@
 @HostAddress=http://localhost:5112
 
+
+###############################################
+# ATHLETES
+###############################################
+
+
+### Get all athletes
+
+GET {{HostAddress}}/api/athletes
+Accept: application/json
+
+
+### Add athlete
+
+POST {{HostAddress}}/api/athletes
+Content-Type: application/json
+
+{
+  "name": "Daniel Harad",
+  "bodyWeight": 82.5,
+  "weightClass": "83kg",
+  "division": "Open",
+  "team": "Drexel Powerlifting"
+}
+
+> {%
+    client.global.set("athleteId", response.body.athleteId);
+%}
+
+
+### Get athlete by ID
+
+GET {{HostAddress}}/api/athletes/{{athleteId}}
+Accept: application/json
+
+
+### Update athlete
+
+PUT {{HostAddress}}/api/athletes/{{athleteId}}
+Content-Type: application/json
+
+{
+  "name": "Daniel Harad",
+  "bodyWeight": 81.8,
+  "weightClass": "83kg",
+  "division": "Open",
+  "team": "Drexel Powerlifting Club"
+}
+
+
+### Delete athlete
+
+DELETE {{HostAddress}}/api/athletes/{{athleteId}}
+
+
+
+###############################################
+# MEETS
+###############################################
+
+
+### Get all meets
+
+GET {{HostAddress}}/api/meets
+Accept: application/json
+
+
+### Add meet
+
+POST {{HostAddress}}/api/meets
+Content-Type: application/json
+
+{
+  "meetName": "Iron Ledger Summer Open",
+  "date": "2026-08-15T09:00:00",
+  "federation": "USAPL",
+  "meetStatus": 0
+}
+
+> {%
+    client.global.set("meetId", response.body.meetId);
+%}
+
+
+### Get meet by ID
+
+GET {{HostAddress}}/api/meets/{{meetId}}
+Accept: application/json
+
+
+### Update meet
+
+PUT {{HostAddress}}/api/meets/{{meetId}}
+Content-Type: application/json
+
+{
+  "meetName": "Iron Ledger Summer Open 2026",
+  "date": "2026-08-15T09:00:00",
+  "federation": "USAPL",
+  "meetStatus": 1
+}
+
+
+### Delete meet
+
+DELETE {{HostAddress}}/api/meets/{{meetId}}
+
+
+
+###############################################
+# ATTEMPTS
+###############################################
+
+
+### Get all attempts
+
 GET {{HostAddress}}/api/attempts
 Accept: application/json
 
-###
+
+### Add squat attempt
+
+POST {{HostAddress}}/api/attempts
+Content-Type: application/json
+
+{
+  "meetId": "{{meetId}}",
+  "athleteId": "{{athleteId}}",
+  "liftType": 0,
+  "attemptNum": 1,
+  "weight": 185,
+  "result": 1
+}
+
+> {%
+    client.global.set("attemptId", response.body.attemptId);
+%}
+
+
+### Get attempt by ID
+
+GET {{HostAddress}}/api/attempts/{{attemptId}}
+Accept: application/json
+
+
+### Update attempt
+
+PUT {{HostAddress}}/api/attempts/{{attemptId}}
+Content-Type: application/json
+
+{
+  "liftType": 0,
+  "attemptNum": 1,
+  "weight": 190,
+  "result": 1
+}
+
+
+### Delete attempt
+
+DELETE {{HostAddress}}/api/attempts/{{attemptId}}

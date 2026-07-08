@@ -14,28 +14,28 @@ public class AthletesController : ControllerBase
     {
         _context = context;
     }
-    
+
     [HttpGet]
     public IActionResult GetAllAthletes() // turn these into async calls
     {
         var allAthletes = _context.Athletes.ToList();
         return Ok(allAthletes);
     }
-    
+
     [HttpGet]
     [Route("{id:guid}")]
     public IActionResult GetAthleteById(Guid id)
     {
-        var athlete = _context.Athletes.Find(id); 
+        var athlete = _context.Athletes.Find(id);
 
         if (athlete is null)
         {
             return NotFound("Athlete was not found in database!");
         }
-        
+
         return Ok(athlete);
     }
-    
+
     [HttpPost]
     public IActionResult AddAthlete(AddAthleteDto addAthleteDto)
     {
@@ -50,10 +50,10 @@ public class AthletesController : ControllerBase
 
         _context.Athletes.Add(athleteEntity); // this does not sync anything up, just creates the action
         _context.SaveChanges();
-        
+
         return Ok(athleteEntity); // Ok returns  200 as the return type, but 201 might be better
     }
-    
+
     [HttpPut]
     [Route("{id:guid}")]
     public IActionResult UpdateEmployee(Guid id, UpdateEmployeeDto updateEmployeeDto)
@@ -74,7 +74,7 @@ public class AthletesController : ControllerBase
         return Ok(athlete);
 
     }
-    
+
     [HttpDelete]
     [Route("{id:guid}")]
     public IActionResult DeleteAthlete(Guid id)
@@ -90,5 +90,5 @@ public class AthletesController : ControllerBase
         return Ok();
 
     }
-    
+
 }
