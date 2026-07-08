@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IronLedger.Api.Data;
 
-public class IronLedgerDbContext: DbContext
+public class IronLedgerDbContext : DbContext
 {
     public IronLedgerDbContext(DbContextOptions<IronLedgerDbContext> options) : base(options)
     {
