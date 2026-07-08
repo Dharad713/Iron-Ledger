@@ -10,4 +10,4 @@ The main purpose of this project is not to build a production-ready powerlifting
 # Todo/Ideas:
 - Judging light options: see USAPL [rulebook](https://www.usapowerlifting.com/assets/general/PDFs/USAPL-Rulebook-v2026.1-Final-with-markups.pdf) section 2.10
 - Make API Calls asynchronous
-- Make a Leaderboard ( Add Dots, Overall total, Weightclass Total, Gender Total, Weightclass Dot, etc
+- Make a Leaderboard ( Add Dots, Overall total, Weightclass Total, Gender Total, Weightclass Dot, etc) see https://www.openpowerlifting.org/rankings/raw
