@@ -7,7 +7,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddDbContext<IronLedgerDbContext>(options =>
     options.UseSqlServer(
-        builder.Configuration.GetConnectionString("IronLedgerDb")
+        builder.Configuration.GetConnectionString("DefaultConnection")
     )
 );
 
