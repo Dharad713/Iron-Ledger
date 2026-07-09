@@ -49,7 +49,8 @@ public class MeetsController : ControllerBase
             MeetName = addMeetDto.MeetName,
             Date = addMeetDto.Date,
             Federation = addMeetDto.Federation,
-            MeetStatus = addMeetDto.MeetStatus
+            MeetStatus = addMeetDto.MeetStatus,
+            EquipmentStatus = addMeetDto.EquipmentStatus
         };
 
         _context.Meets.Add(meetEntity);
@@ -76,7 +77,7 @@ public class MeetsController : ControllerBase
         meet.Date = updateMeetDto.Date;
         meet.Federation = updateMeetDto.Federation;
         meet.MeetStatus = updateMeetDto.MeetStatus;
-
+        meet.EquipmentStatus = updateMeetDto.EquipmentStatus;
         _context.SaveChanges();
 
         return Ok(meet);

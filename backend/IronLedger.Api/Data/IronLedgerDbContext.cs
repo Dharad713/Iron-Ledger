@@ -14,4 +14,5 @@ public class IronLedgerDbContext : DbContext
     public DbSet<Athlete> Athletes { get; set; } = null!;
     public DbSet<Meet> Meets { get; set; } = null!;
     public DbSet<Attempt> Attempts { get; set; } = null!;
+    public DbSet<LeaderboardEntry> Leaderboard { get; set; } = null!;
 }

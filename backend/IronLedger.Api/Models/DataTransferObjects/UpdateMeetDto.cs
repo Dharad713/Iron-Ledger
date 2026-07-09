@@ -8,4 +8,5 @@ public class UpdateMeetDto
     public required DateTime Date { get; set; }
     public required string Federation { get; set; }
     public required MeetStatus MeetStatus { get; set; }
+    public required EquipmentStatus EquipmentStatus { get; set; }
 }

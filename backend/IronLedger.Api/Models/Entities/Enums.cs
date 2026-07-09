@@ -29,3 +29,18 @@ public enum Result // add Failure light options??
     GoodLift,
     NoLift
 }
+
+public enum Sex
+{
+    Male,
+    Female
+}
+
+public enum EquipmentStatus
+{
+    Raw,
+    Wraps,
+    SinglePly,
+    MultiPly,
+    Unlimited
+}

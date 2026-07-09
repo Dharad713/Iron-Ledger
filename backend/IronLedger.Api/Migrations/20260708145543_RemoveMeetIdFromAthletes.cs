@@ -11,9 +11,6 @@ namespace IronLedger.Api.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "MeetId",
-                table: "Athletes");
         }
 
         /// <inheritdoc />

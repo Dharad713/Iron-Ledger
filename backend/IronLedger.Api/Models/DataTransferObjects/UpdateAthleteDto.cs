@@ -1,9 +1,12 @@
-﻿namespace IronLedger.Api.Models.DataTransferObjects;
+﻿using IronLedger.Api.Models.Entities;
+
+namespace IronLedger.Api.Models.DataTransferObjects;
 
 public class UpdateEmployeeDto
 {
     public required string Name { get; set; }
-    public required double BodyWeight { get; set; }
+    public required decimal BodyWeight { get; set; }
+    public required Sex Sex { get; set; }
     public string? WeightClass { get; set; }
     public string? Division { get; set; }
     public string? Team { get; set; }

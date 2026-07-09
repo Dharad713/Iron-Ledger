@@ -44,7 +44,7 @@ Content-Type: application/json
 {
   "name": "Daniel Harad",
   "bodyWeight": 81.8,
-  "weightClass": "83kg",
+  "weightClass": "83kg", 
   "division": "Open",
   "team": "Drexel Powerlifting Club"
 }
@@ -161,3 +161,12 @@ Content-Type: application/json
 ### Delete attempt
 
 DELETE {{HostAddress}}/api/attempts/{{attemptId}}
+
+###############################################
+# LEADERBOARD (NOT DONE)
+###############################################
+
+### Get leaderboard
+
+GET {{HostAddress}}/api/Leaderboard
+Accept: application/json

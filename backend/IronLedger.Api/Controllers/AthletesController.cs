@@ -43,6 +43,7 @@ public class AthletesController : ControllerBase
         {
             Name = addAthleteDto.Name,
             BodyWeight = addAthleteDto.BodyWeight,
+            Sex = addAthleteDto.Sex,
             WeightClass = addAthleteDto.WeightClass,
             Division = addAthleteDto.Division,
             Team = addAthleteDto.Team
@@ -66,6 +67,7 @@ public class AthletesController : ControllerBase
 
         athlete.Name = updateEmployeeDto.Name;
         athlete.BodyWeight = updateEmployeeDto.BodyWeight;
+        athlete.Sex = updateEmployeeDto.Sex;
         athlete.WeightClass = updateEmployeeDto.WeightClass;
         athlete.Division = updateEmployeeDto.Division;
         athlete.Team = updateEmployeeDto.Team;

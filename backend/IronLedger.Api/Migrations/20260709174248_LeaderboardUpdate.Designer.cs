@@ -4,6 +4,7 @@ using IronLedger.Api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IronLedger.Api.Migrations
 {
     [DbContext(typeof(IronLedgerDbContext))]
-    partial class IronLedgerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260709174248_LeaderboardUpdate")]
+    partial class LeaderboardUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,8 +31,8 @@ namespace IronLedger.Api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<decimal>("BodyWeight")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("BodyWeight")
+                        .HasColumnType("float");
 
                     b.Property<string>("Division")
                         .HasColumnType("nvarchar(max)");
@@ -83,7 +86,7 @@ namespace IronLedger.Api.Migrations
 
             modelBuilder.Entity("IronLedger.Api.Models.Entities.LeaderboardEntry", b =>
                 {
-                    b.Property<Guid>("LeaderboardEntryId")
+                    b.Property<Guid>("LeaderboardEntryID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -130,7 +133,7 @@ namespace IronLedger.Api.Migrations
                     b.Property<string>("WeightClass")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("LeaderboardEntryId");
+                    b.HasKey("LeaderboardEntryID");
 
                     b.ToTable("Leaderboard");
                 });
