@@ -76,21 +76,23 @@ public class AthletesController : ControllerBase
         return Ok(athlete);
 
     }
-
-    [HttpDelete]
-    [Route("{id:guid}")]
-    public IActionResult DeleteAthlete(Guid id)
-    {
-        var athlete = _context.Athletes.Find(id);
-        if (athlete is null)
-        {
-            return NotFound();
-        }
-
-        _context.Athletes.Remove(athlete);
-        _context.SaveChanges();
-        return Ok();
-
-    }
+    
+    // TODO: turn this into archive rather than delete
+    
+    // [HttpDelete]
+    // [Route("{id:guid}")]
+    // public IActionResult DeleteAthlete(Guid id)
+    // {
+    //     var athlete = _context.Athletes.Find(id);
+    //     if (athlete is null)
+    //     {
+    //         return NotFound();
+    //     }
+    //
+    //     _context.Athletes.Remove(athlete);
+    //     _context.SaveChanges();
+    //     return Ok();
+    //
+    // }
 
 }

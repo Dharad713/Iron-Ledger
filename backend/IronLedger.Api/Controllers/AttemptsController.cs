@@ -84,21 +84,21 @@ public class AttemptsController : ControllerBase
         return Ok(attempt);
     }
 
-
-    [HttpDelete]
-    [Route("{id:guid}")]
-    public IActionResult DeleteAttempt(Guid id)
-    {
-        var attempt = _context.Attempts.Find(id);
-
-        if (attempt is null)
-        {
-            return NotFound();
-        }
-
-        _context.Attempts.Remove(attempt);
-        _context.SaveChanges();
-
-        return Ok();
-    }
+    // TODO: turn this into archive rather than delete
+    // [HttpDelete]
+    // [Route("{id:guid}")]
+    // public IActionResult DeleteAttempt(Guid id)
+    // {
+    //     var attempt = _context.Attempts.Find(id);
+    //
+    //     if (attempt is null)
+    //     {
+    //         return NotFound();
+    //     }
+    //
+    //     _context.Attempts.Remove(attempt);
+    //     _context.SaveChanges();
+    //
+    //     return Ok();
+    // }
 }

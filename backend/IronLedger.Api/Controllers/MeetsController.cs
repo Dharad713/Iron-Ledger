@@ -83,21 +83,21 @@ public class MeetsController : ControllerBase
         return Ok(meet);
     }
 
-
-    [HttpDelete]
-    [Route("{id:guid}")]
-    public IActionResult DeleteMeet(Guid id)
-    {
-        var meet = _context.Meets.Find(id);
-
-        if (meet is null)
-        {
-            return NotFound();
-        }
-
-        _context.Meets.Remove(meet);
-        _context.SaveChanges();
-
-        return Ok();
-    }
+    // TODO: turn this into archive rather than delete
+    // [HttpDelete]
+    // [Route("{id:guid}")]
+    // public IActionResult DeleteMeet(Guid id)
+    // {
+    //     var meet = _context.Meets.Find(id);
+    //
+    //     if (meet is null)
+    //     {
+    //         return NotFound();
+    //     }
+    //
+    //     _context.Meets.Remove(meet);
+    //     _context.SaveChanges();
+    //
+    //     return Ok();
+    // }
 }
