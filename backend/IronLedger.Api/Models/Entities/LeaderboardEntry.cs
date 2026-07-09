@@ -2,7 +2,6 @@
 
 public class LeaderboardEntry
 {
-    public Guid LeaderboardEntryId { get; set; }
     public Guid AthleteId { get; set; }
     public string AthleteName { get; set; } = string.Empty;
     public Sex Sex { get; set; }

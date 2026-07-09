@@ -15,4 +15,10 @@ public class IronLedgerDbContext : DbContext
     public DbSet<Meet> Meets { get; set; } = null!;
     public DbSet<Attempt> Attempts { get; set; } = null!;
     public DbSet<LeaderboardEntry> Leaderboard { get; set; } = null!;
+    
+    protected override void OnModelCreating(ModelBuilder modelBuilder) // athlete id should be the primary key for leaderboards 
+    {
+        modelBuilder.Entity<LeaderboardEntry>()
+            .HasKey(entry => entry.AthleteId);
+    }
 }
