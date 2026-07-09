@@ -12,3 +12,24 @@ The main purpose of this project is not to build a production-ready powerlifting
 - Make API Calls asynchronous
 - Make a Leaderboard ( Add Dots, Overall total, Weightclass Total, Gender Total, Weightclass Dot, etc) see https://www.openpowerlifting.org/rankings/raw
 - Add age classes and make enums for weight and age classes 
+
+
+## Current Architecture Goal
+```
+                     ┌──────────────────┐
+                     │  React Frontend  │
+                     └────────┬─────────┘
+                              │ HTTP/JSON
+                              ▼
+                     ┌──────────────────┐
+                     │ API Gateway/BFF  │
+                     └────────┬─────────┘
+                              │ gRPC
+          ┌───────────────────┼───────────────────┐
+          ▼                   ▼                   ▼
+  AthleteService       MeetService        AttemptService
+                                                   │
+                                      ┌────────────┴────────────┐
+                                      ▼                         ▼
+                              ScoringService          LeaderboardService
+```
