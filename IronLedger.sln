@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{1AE8
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IronLedger.Api", "backend\IronLedger.Api\IronLedger.Api.csproj", "{236A57FA-6BFB-4D77-8EC0-7104FAFE89C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IronLedger.Contracts", "backend\IronLedger.Contracts\IronLedger.Contracts.csproj", "{6BEF94F1-55A8-437E-A627-5526ECE00A9A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,18 @@ Global
 		{236A57FA-6BFB-4D77-8EC0-7104FAFE89C0}.Release|x64.Build.0 = Release|Any CPU
 		{236A57FA-6BFB-4D77-8EC0-7104FAFE89C0}.Release|x86.ActiveCfg = Release|Any CPU
 		{236A57FA-6BFB-4D77-8EC0-7104FAFE89C0}.Release|x86.Build.0 = Release|Any CPU
+		{6BEF94F1-55A8-437E-A627-5526ECE00A9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BEF94F1-55A8-437E-A627-5526ECE00A9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BEF94F1-55A8-437E-A627-5526ECE00A9A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6BEF94F1-55A8-437E-A627-5526ECE00A9A}.Debug|x64.Build.0 = Debug|Any CPU
+		{6BEF94F1-55A8-437E-A627-5526ECE00A9A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6BEF94F1-55A8-437E-A627-5526ECE00A9A}.Debug|x86.Build.0 = Debug|Any CPU
+		{6BEF94F1-55A8-437E-A627-5526ECE00A9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BEF94F1-55A8-437E-A627-5526ECE00A9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BEF94F1-55A8-437E-A627-5526ECE00A9A}.Release|x64.ActiveCfg = Release|Any CPU
+		{6BEF94F1-55A8-437E-A627-5526ECE00A9A}.Release|x64.Build.0 = Release|Any CPU
+		{6BEF94F1-55A8-437E-A627-5526ECE00A9A}.Release|x86.ActiveCfg = Release|Any CPU
+		{6BEF94F1-55A8-437E-A627-5526ECE00A9A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

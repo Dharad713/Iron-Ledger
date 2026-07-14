@@ -1,0 +1,86 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "IronLedger.Contracts.Athletes";
+
+package ironledger.athletes;
+
+service AthleteService {
+  rpc GetAthlete(GetAthleteRequest) returns (GetAthleteResponse);
+  rpc GetAthletesByIds(GetAthletesByIdsRequest) returns (GetAthletesByIdsResponse);
+  rpc ListAthletes(ListAthletesRequest) returns (ListAthletesResponse);
+  rpc UpdateAthlete(UpdateAthleteRequest) returns (UpdateAthleteResponse);
+  rpc ArchiveAthlete(ArchiveAthleteRequest) returns (ArchiveAthleteResponse);
+}
+
+message AthleteMessage{
+  string athlete_id = 1;
+  string name = 2;
+  double body_weight_kg = 3;
+  string sex = 4;
+  string weight_class = 5;
+  string division = 6;
+  string team = 7;
+  bool is_archived = 8;
+}
+
+message CreateAthleteRequest {
+  string name = 1;
+  double body_weight_kg = 2;
+  string sex = 3;
+  string weight_class = 4;
+  string division = 5;
+  string team = 6;
+}
+
+message CreateAthleteResponse {
+  AthleteMessage athlete = 1;
+}
+
+message GetAthleteRequest {
+  string athlete_id = 1;
+}
+
+message GetAthleteResponse {
+  AthleteMessage athlete = 1;
+}
+
+message GetAthletesByIdsRequest {
+  repeated string athlete_ids = 1;
+}
+
+message GetAthletesByIdsResponse {
+  repeated AthleteMessage athletes = 1;
+}
+
+message ListAthletesRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+  string name_search = 3;
+}
+
+message ListAthletesResponse {
+  repeated AthleteMessage athletes = 1;
+  string next_page_token = 2;
+}
+
+message UpdateAthleteRequest {
+  string athlete_id = 1;
+  string name = 2;
+  double body_weight_kg = 3;
+  string sex = 4;
+  string weight_class = 5;
+  string division = 6;
+  string team = 7;
+}
+
+message UpdateAthleteResponse {
+  AthleteMessage athlete = 1;
+}
+
+message ArchiveAthleteRequest {
+  string athlete_id = 1;
+}
+
+message ArchiveAthleteResponse {
+  bool success = 1;
+}
