@@ -22,7 +22,7 @@ The main purpose of this project is not to build a production-ready powerlifting
                               │ HTTP/JSON
                               ▼
                      ┌──────────────────┐
-                     │ API Gateway/BFF  │
+                     │ API Gateway  │
                      └────────┬─────────┘
                               │ gRPC
           ┌───────────────────┼───────────────────┐
