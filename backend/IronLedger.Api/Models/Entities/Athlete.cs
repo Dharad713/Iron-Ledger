@@ -9,4 +9,5 @@ public class Athlete
     public string? WeightClass { get; set; }
     public string? Division { get; set; }
     public string? Team { get; set; }
+    public bool IsArchived { get; set; } = false;
 }

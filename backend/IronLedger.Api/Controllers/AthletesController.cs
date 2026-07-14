@@ -46,7 +46,8 @@ public class AthletesController : ControllerBase
             Sex = addAthleteDto.Sex,
             WeightClass = addAthleteDto.WeightClass,
             Division = addAthleteDto.Division,
-            Team = addAthleteDto.Team
+            Team = addAthleteDto.Team,
+            IsArchived = addAthleteDto.IsArchived,
         };
 
         _context.Athletes.Add(athleteEntity); // this does not sync anything up, just creates the action
@@ -57,7 +58,7 @@ public class AthletesController : ControllerBase
 
     [HttpPut]
     [Route("{id:guid}")]
-    public IActionResult UpdateEmployee(Guid id, UpdateEmployeeDto updateEmployeeDto)
+    public IActionResult UpdateAthlete(Guid id, UpdateAthleteDto updateAthleteDto)
     {
         var athlete = _context.Athletes.Find(id);
         if (athlete is null)
@@ -65,12 +66,13 @@ public class AthletesController : ControllerBase
             return NotFound();
         }
 
-        athlete.Name = updateEmployeeDto.Name;
-        athlete.BodyWeight = updateEmployeeDto.BodyWeight;
-        athlete.Sex = updateEmployeeDto.Sex;
-        athlete.WeightClass = updateEmployeeDto.WeightClass;
-        athlete.Division = updateEmployeeDto.Division;
-        athlete.Team = updateEmployeeDto.Team;
+        athlete.Name = updateAthleteDto.Name;
+        athlete.BodyWeight = updateAthleteDto.BodyWeight;
+        athlete.Sex = updateAthleteDto.Sex;
+        athlete.WeightClass = updateAthleteDto.WeightClass;
+        athlete.Division = updateAthleteDto.Division;
+        athlete.Team = updateAthleteDto.Team;
+        athlete.IsArchived = updateAthleteDto.IsArchived;
 
         _context.SaveChanges();
         return Ok(athlete);
