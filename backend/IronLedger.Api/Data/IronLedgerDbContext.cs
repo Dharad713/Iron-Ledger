@@ -23,12 +23,12 @@ public class IronLedgerDbContext : DbContext
 
     public DbSet<MeetRegistration> MeetRegistrations { get; set; }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder) 
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<LeaderboardEntry>() // athlete id should be the primary key for leaderboards 
             .HasKey(entry => entry.AthleteId);
-        
+
         modelBuilder.Entity<MeetRegistration>()
             .HasOne<Meet>()
             .WithMany(meet => meet.Registrations)

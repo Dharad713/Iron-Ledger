@@ -5,7 +5,7 @@ using IronLedger.Contracts.Meets;
 namespace IronLedger.AthleteService.Services;
 
 
-public class AthleteService: Contracts.Athletes.AthleteService.AthleteServiceBase
+public class AthleteService : Contracts.Athletes.AthleteService.AthleteServiceBase
 {
 
 }
