@@ -1,0 +1,85 @@
+﻿@HostAddress=http://localhost:5112
+
+
+###############################################
+# MEETS
+###############################################
+
+
+### Get all meets
+
+GET {{HostAddress}}/api/meets
+Accept: application/json
+
+
+### Add meet
+
+POST {{HostAddress}}/api/meets
+Content-Type: application/json
+
+{
+  "meetName": "Iron Ledger Summer Open",
+  "date": "2026-08-15T09:00:00",
+  "location": "Philadelphia, PA",
+  "federation": "USAPL",
+  "equipmentStatus": 0,
+  "meetStatus": 0,
+  "registrationOpensAt": "2026-05-01T09:00:00",
+  "registrationClosesAt": "2026-08-01T23:59:59",
+  "weightClasses": [
+    {
+      "weightClassName": "83kg",
+      "sex": 0,
+      "minimumWeightKg": 74.01,
+      "maximumWeightKg": 83.00
+    },
+    {
+      "weightClassName": "93kg",
+      "sex": 0,
+      "minimumWeightKg": 83.01,
+      "maximumWeightKg": 93.00
+    }
+  ],
+  "divisions": [
+    {
+      "meetDivisionName": "Open",
+      "sex": 0,
+      "minimumAge": 14,
+      "maximumAge": null
+    },
+    {
+      "meetDivisionName": "Junior",
+      "sex": 0,
+      "minimumAge": 14,
+      "maximumAge": 23
+    }
+  ]
+}
+
+> {%
+    client.global.set("meetId", response.body.meetId);
+%}
+
+
+### Get meet by ID
+
+GET {{HostAddress}}/api/meets/{{meetId}}
+Accept: application/json
+
+
+### Update meet
+
+PUT {{HostAddress}}/api/meets/{{meetId}}
+Content-Type: application/json
+
+{
+  "meetName": "Iron Ledger Summer Open 2026",
+  "date": "2026-08-15T09:00:00",
+  "location": "Drexel University, Philadelphia, PA",
+  "federation": "USAPL",
+  "equipmentStatus": 0,
+  "meetStatus": 1,
+  "registrationOpensAt": "2026-05-01T09:00:00",
+  "registrationClosesAt": "2026-08-05T23:59:59"
+}
+
