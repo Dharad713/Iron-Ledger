@@ -1,0 +1,281 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "IronLedger.Contracts.Meets";
+
+package ironledger.meets;
+import "google/protobuf/timestamp.proto";
+
+service MeetService {
+  // Meet Management
+  rpc CreateMeet(CreateMeetRequest) returns (CreateMeetResponse);
+  rpc GetMeet(GetMeetRequest) returns (GetMeetResponse);
+  rpc GetMeetsByIds(GetMeetsByIdsRequest) returns (GetMeetsByIdsResponse);
+  rpc ListMeets(ListMeetsRequest) returns (ListMeetsResponse);
+  rpc UpdateMeet(UpdateMeetRequest) returns (UpdateMeetResponse);
+  rpc CancelMeet(CancelMeetRequest) returns (CancelMeetResponse);
+
+  // Meet Lifecycle
+  rpc OpenRegistration(OpenRegistrationRequest) returns (OpenRegistrationResponse);
+
+  rpc CloseRegistration(CloseRegistrationRequest) returns (CloseRegistrationResponse);
+
+  rpc StartMeet(StartMeetRequest) returns (StartMeetResponse);
+
+  rpc CompleteMeet(CompleteMeetRequest) returns (CompleteMeetResponse);
+
+  // Meet Registration
+  rpc RegisterAthlete(RegisterAthleteRequest) returns (RegisterAthleteResponse);
+
+  rpc WithdrawAthlete(WithdrawAthleteRequest) returns (WithdrawAthleteResponse);
+
+  rpc GetRegistration(GetRegistrationRequest) returns (GetRegistrationResponse);
+
+  rpc ListRegistrationsForMeet(ListRegistrationsForMeetRequest) returns (ListRegistrationsForMeetResponse);
+}
+
+
+// Meet Management
+
+message MeetMessage {
+  string meet_id = 1;
+  string meet_name = 2;
+  google.protobuf.Timestamp date = 3;
+  string location = 4;
+  string federation = 5;
+  EquipmentStatus equipment_status = 6;
+  MeetStatus meet_status = 7;
+  google.protobuf.Timestamp registration_opens_at = 8;
+  google.protobuf.Timestamp registration_closes_at = 9;
+
+  repeated MeetWeightClassMessage weight_classes = 10;
+  repeated MeetDivisionMessage divisions = 11;
+}
+
+message CreateMeetRequest {
+  string meet_name = 1;
+  google.protobuf.Timestamp date = 2;
+  string location = 3;
+  string federation = 4;
+  EquipmentStatus equipment_status = 5;
+  MeetStatus meet_status = 6;
+  google.protobuf.Timestamp registration_opens_at = 7;
+  google.protobuf.Timestamp registration_closes_at = 8;
+
+  repeated CreateMeetWeightClassMessage weight_classes = 9;
+  repeated CreateMeetDivisionMessage divisions = 10;
+}
+
+message CreateMeetResponse {
+  MeetMessage meet = 1;
+}
+
+message GetMeetRequest {
+  string meet_id = 1;
+}
+
+message GetMeetResponse {
+  MeetMessage meet = 1;
+}
+
+message GetMeetsByIdsRequest {
+  repeated string meet_ids = 1;
+}
+
+message GetMeetsByIdsResponse {
+  repeated MeetMessage meets = 1;
+}
+
+message ListMeetsRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+  string name_search = 3;
+}
+
+message ListMeetsResponse {
+  repeated MeetMessage meets = 1;
+  string next_page_token = 2;
+}
+
+message UpdateMeetRequest {
+  string meet_id = 1;
+  string meet_name = 2;
+  google.protobuf.Timestamp date = 3;
+  string location = 4;
+  string federation = 5;
+  EquipmentStatus equipment_status = 6;
+  MeetStatus meet_status = 7;
+  google.protobuf.Timestamp registration_opens_at = 8;
+  google.protobuf.Timestamp registration_closes_at = 9;
+}
+
+message UpdateMeetResponse {
+  MeetMessage meet = 1;
+}
+
+message CancelMeetRequest {
+  string meet_id = 1;
+}
+
+message CancelMeetResponse {
+  MeetMessage meet = 1;
+}
+
+
+// Meet Weight Classes
+
+message MeetWeightClassMessage {
+  string meet_weight_class_id = 1;
+  string meet_id = 2;
+  string weight_class_name = 3;
+  Sex sex = 4;
+  double minimum_weight_kg = 5;
+  double maximum_weight_kg = 6;
+}
+
+message CreateMeetWeightClassMessage {
+  string weight_class_name = 1;
+  Sex sex = 2;
+  double minimum_weight_kg = 3;
+  double maximum_weight_kg = 4;
+}
+
+
+// Meet Divisions
+
+message MeetDivisionMessage {
+  string meet_division_id = 1;
+  string meet_id = 2;
+  string meet_division_name = 3;
+  Sex sex = 4;
+  int32 minimum_age = 5;
+  int32 maximum_age = 6;
+}
+
+message CreateMeetDivisionMessage {
+  string meet_division_name = 1;
+  Sex sex = 2;
+  int32 minimum_age = 3;
+  int32 maximum_age = 4;
+}
+
+
+// Meet Lifecycle
+
+message OpenRegistrationRequest {
+  string meet_id = 1;
+}
+
+message OpenRegistrationResponse {
+  MeetMessage meet = 1;
+}
+
+message CloseRegistrationRequest {
+  string meet_id = 1;
+}
+
+message CloseRegistrationResponse {
+  MeetMessage meet = 1;
+}
+
+message StartMeetRequest {
+  string meet_id = 1;
+}
+
+message StartMeetResponse {
+  MeetMessage meet = 1;
+}
+
+message CompleteMeetRequest {
+  string meet_id = 1;
+}
+
+message CompleteMeetResponse {
+  MeetMessage meet = 1;
+}
+
+
+// Meet Registration
+
+message MeetRegistrationMessage {
+  string meet_registration_id = 1;
+  string meet_id = 2;
+  string athlete_id = 3;
+  string meet_weight_class_id = 4;
+  string meet_division_id = 5;
+  double body_weight_kg = 6;
+  RegistrationStatus status = 7;
+}
+
+message RegisterAthleteRequest {
+  string meet_id = 1;
+  string athlete_id = 2;
+  string meet_weight_class_id = 3;
+  string meet_division_id = 4;
+  double body_weight_kg = 5;
+}
+
+message RegisterAthleteResponse {
+  MeetRegistrationMessage registration = 1;
+}
+
+message WithdrawAthleteRequest {
+  string meet_id = 1;
+  string athlete_id = 2;
+}
+
+message WithdrawAthleteResponse {
+  MeetRegistrationMessage registration = 1;
+}
+
+message GetRegistrationRequest {
+  string meet_id = 1;
+  string athlete_id = 2;
+}
+
+message GetRegistrationResponse {
+  MeetRegistrationMessage registration = 1;
+}
+
+message ListRegistrationsForMeetRequest {
+  string meet_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListRegistrationsForMeetResponse {
+  repeated MeetRegistrationMessage registrations = 1;
+  string next_page_token = 2;
+}
+
+
+// Enums
+
+enum MeetStatus {
+  MEET_STATUS_UNSPECIFIED = 0;
+  MEET_STATUS_DRAFT = 1;
+  MEET_STATUS_REGISTRATION_OPEN = 2;
+  MEET_STATUS_REGISTRATION_CLOSED = 3;
+  MEET_STATUS_ACTIVE = 4;
+  MEET_STATUS_COMPLETED = 5;
+  MEET_STATUS_CANCELLED = 6;
+}
+
+enum EquipmentStatus {
+  EQUIPMENT_STATUS_UNSPECIFIED = 0;
+  EQUIPMENT_STATUS_RAW = 1;
+  EQUIPMENT_STATUS_WRAPS = 2;
+  EQUIPMENT_STATUS_EQUIPPED = 3;
+  
+}
+
+enum RegistrationStatus {
+  REGISTRATION_STATUS_UNSPECIFIED = 0;
+  REGISTRATION_STATUS_REGISTERED = 1;
+  REGISTRATION_STATUS_WITHDRAWN = 2;
+}
+
+enum Sex {
+  SEX_UNSPECIFIED = 0;
+  SEX_MALE = 1;
+  SEX_FEMALE = 2;
+}

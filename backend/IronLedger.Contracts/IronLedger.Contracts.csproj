@@ -17,5 +17,9 @@
     
     <ItemGroup>
         <Protobuf Include="Protos\athlete.proto" GrpcServices="Both" />
+        <Protobuf Include="Protos\meet.proto" GrpcServices="Both" />
+        <Protobuf Include="Protos\attempt.proto" GrpcServices="Both" />
+        <Protobuf Include="Protos\leaderboard.proto" GrpcServices="Both" />
+        <Protobuf Include="Protos\scoring.proto" GrpcServices="Both" />
     </ItemGroup>
 </Project>

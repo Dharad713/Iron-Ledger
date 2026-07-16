@@ -1,0 +1,5 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "IronLedger.Contracts.Leaderboard";
+
+package ironledger.leaderboard;
