@@ -78,9 +78,9 @@ public class AthletesController : ControllerBase
         return Ok(athlete);
 
     }
-    
+
     // TODO: turn this into archive rather than delete
-    
+
     // [HttpDelete]
     // [Route("{id:guid}")]
     // public IActionResult DeleteAthlete(Guid id)

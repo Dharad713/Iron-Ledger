@@ -1,12 +1,14 @@
 ﻿using IronLedger.Api.Data;
 using IronLedger.Api.Models.DataTransferObjects;
 using IronLedger.Api.Models.Entities;
+using IronLedger.Api.Models.Entities.MeetObjects;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace IronLedger.Api.Controllers;
 
 [ApiController]
-[Route("api/[controller]")] // localhost:xxxx/api/meets
+[Route("api/[controller]")]
 public class MeetsController : ControllerBase
 {
     private readonly IronLedgerDbContext _context;
@@ -16,21 +18,25 @@ public class MeetsController : ControllerBase
         _context = context;
     }
 
-
     [HttpGet]
-    public IActionResult GetAllMeets() // turn these into async calls later
+    public IActionResult GetAllMeets()
     {
-        var allMeets = _context.Meets.ToList();
+        var allMeets = _context.Meets
+            .Include(meet => meet.WeightClasses)
+            .Include(meet => meet.Divisions)
+            .ToList();
 
         return Ok(allMeets);
     }
-
 
     [HttpGet]
     [Route("{id:guid}")]
     public IActionResult GetMeetById(Guid id)
     {
-        var meet = _context.Meets.Find(id);
+        var meet = _context.Meets
+            .Include(meet => meet.WeightClasses)
+            .Include(meet => meet.Divisions)
+            .FirstOrDefault(meet => meet.MeetId == id);
 
         if (meet is null)
         {
@@ -40,17 +46,46 @@ public class MeetsController : ControllerBase
         return Ok(meet);
     }
 
-
     [HttpPost]
     public IActionResult AddMeet(AddMeetDto addMeetDto)
     {
-        var meetEntity = new Meet()
+        var meetId = Guid.NewGuid();
+
+        var meetEntity = new Meet
         {
+            MeetId = meetId,
             MeetName = addMeetDto.MeetName,
             Date = addMeetDto.Date,
+            Location = addMeetDto.Location,
             Federation = addMeetDto.Federation,
             MeetStatus = addMeetDto.MeetStatus,
-            EquipmentStatus = addMeetDto.EquipmentStatus
+            EquipmentStatus = addMeetDto.EquipmentStatus,
+            RegistrationOpensAt = addMeetDto.RegistrationOpensAt,
+            RegistrationClosesAt = addMeetDto.RegistrationClosesAt,
+
+            WeightClasses = addMeetDto.WeightClasses
+                .Select(weightClass => new MeetWeightClass
+                {
+                    MeetWeightClassId = Guid.NewGuid(),
+                    MeetId = meetId,
+                    WeightClassName = weightClass.WeightClassName,
+                    Sex = weightClass.Sex,
+                    MinimumWeightKg = weightClass.MinimumWeightKg,
+                    MaximumWeightKg = weightClass.MaximumWeightKg
+                })
+                .ToList(),
+
+            Divisions = addMeetDto.Divisions
+                .Select(division => new MeetDivision
+                {
+                    MeetDivisionId = Guid.NewGuid(),
+                    MeetId = meetId,
+                    MeetDivisionName = division.MeetDivisionName,
+                    Sex = division.Sex,
+                    MinimumAge = division.MinimumAge,
+                    MaximumAge = division.MaximumAge
+                })
+                .ToList()
         };
 
         _context.Meets.Add(meetEntity);
@@ -58,7 +93,6 @@ public class MeetsController : ControllerBase
 
         return Ok(meetEntity);
     }
-
 
     [HttpPut]
     [Route("{id:guid}")]
@@ -75,29 +109,15 @@ public class MeetsController : ControllerBase
 
         meet.MeetName = updateMeetDto.MeetName;
         meet.Date = updateMeetDto.Date;
+        meet.Location = updateMeetDto.Location;
         meet.Federation = updateMeetDto.Federation;
         meet.MeetStatus = updateMeetDto.MeetStatus;
         meet.EquipmentStatus = updateMeetDto.EquipmentStatus;
+        meet.RegistrationOpensAt = updateMeetDto.RegistrationOpensAt;
+        meet.RegistrationClosesAt = updateMeetDto.RegistrationClosesAt;
+
         _context.SaveChanges();
 
         return Ok(meet);
     }
-
-    // TODO: turn this into archive rather than delete
-    // [HttpDelete]
-    // [Route("{id:guid}")]
-    // public IActionResult DeleteMeet(Guid id)
-    // {
-    //     var meet = _context.Meets.Find(id);
-    //
-    //     if (meet is null)
-    //     {
-    //         return NotFound();
-    //     }
-    //
-    //     _context.Meets.Remove(meet);
-    //     _context.SaveChanges();
-    //
-    //     return Ok();
-    // }
 }

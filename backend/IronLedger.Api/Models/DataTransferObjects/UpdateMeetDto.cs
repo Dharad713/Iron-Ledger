@@ -4,9 +4,19 @@ namespace IronLedger.Api.Models.DataTransferObjects;
 
 public class UpdateMeetDto
 {
-    public required string MeetName { get; set; }
-    public required DateTime Date { get; set; }
-    public required string Federation { get; set; }
-    public required MeetStatus MeetStatus { get; set; }
-    public required EquipmentStatus EquipmentStatus { get; set; }
+    public string MeetName { get; set; }
+
+    public DateTime Date { get; set; }
+
+    public string Location { get; set; }
+
+    public string Federation { get; set; }
+
+    public EquipmentStatus EquipmentStatus { get; set; }
+
+    public MeetStatus MeetStatus { get; set; }
+
+    public DateTime RegistrationOpensAt { get; set; }
+
+    public DateTime RegistrationClosesAt { get; set; }
 }

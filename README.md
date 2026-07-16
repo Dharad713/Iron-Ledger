@@ -12,6 +12,9 @@ The main purpose of this project is not to build a production-ready powerlifting
 - Make API Calls asynchronous
 - Make a Leaderboard ( Add Dots, Overall total, Weightclass Total, Gender Total, Weightclass Dot, etc) see https://www.openpowerlifting.org/rankings/raw
 - Add age classes and make enums for weight and age classes 
+- Should there be federation classes and if so should those have meet templates
+  - Meets should have a list of valid weight classes that athletes need to be in
+    - there needs to be a validation for athletes signing up
 
 
 ## Current Architecture Goal

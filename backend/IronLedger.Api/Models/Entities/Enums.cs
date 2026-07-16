@@ -17,10 +17,14 @@ public enum AttemptResult
 
 public enum MeetStatus
 {
+    Unspecified,
     Draft,
-    Active,
+    RegistrationOpen,
+    RegistrationClosed,
+    Archive,
     Completed,
-    Cancelled
+    Cancelled,
+    Active,
 }
 
 public enum Result // add Failure light options??
@@ -32,6 +36,7 @@ public enum Result // add Failure light options??
 
 public enum Sex
 {
+    Unspecified,
     Male,
     Female
 }
@@ -40,7 +45,14 @@ public enum EquipmentStatus
 {
     Raw,
     Wraps,
-    SinglePly,
-    MultiPly,
-    Unlimited
+    Equipped,
+    Unspecified
 }
+
+public enum RegistrationStatus
+{
+    Unspecified,
+    Registered,
+    Withdrawn,
+}
+

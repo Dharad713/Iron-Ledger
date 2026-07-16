@@ -7,12 +7,12 @@ public class LeaderboardEntry
     public Sex Sex { get; set; }
     public string? Nationality { get; set; }
     public Guid? MeetId { get; set; } // this is for getting meet winners
-    
+
     public string? WeightClass { get; set; }
     public string? Division { get; set; }
     public string? Federation { get; set; }
     public EquipmentStatus? EquipmentStatus { get; set; }
-    
+
 
     public decimal BestSquatKg { get; set; }
     public decimal BestBenchKg { get; set; }
