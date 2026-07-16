@@ -3,8 +3,10 @@
 option csharp_namespace = "IronLedger.Contracts.Athletes";
 
 package ironledger.athletes;
+import "common.proto";
 
 service AthleteService {
+  rpc CreateAthlete(CreateAthleteRequest) returns (CreateAthleteResponse);
   rpc GetAthlete(GetAthleteRequest) returns (GetAthleteResponse);
   rpc GetAthletesByIds(GetAthletesByIdsRequest) returns (GetAthletesByIdsResponse);
   rpc ListAthletes(ListAthletesRequest) returns (ListAthletesResponse);
@@ -12,24 +14,20 @@ service AthleteService {
   rpc ArchiveAthlete(ArchiveAthleteRequest) returns (ArchiveAthleteResponse);
 }
 
-message AthleteMessage{
+message AthleteMessage {
   string athlete_id = 1;
   string name = 2;
   double body_weight_kg = 3;
-  string sex = 4;
-  string weight_class = 5;
-  string division = 6;
-  string team = 7;
-  bool is_archived = 8;
+  ironledger.common.Sex sex = 4;
+  string team = 5;
+  bool is_archived = 6;
 }
 
 message CreateAthleteRequest {
   string name = 1;
   double body_weight_kg = 2;
-  string sex = 3;
-  string weight_class = 4;
-  string division = 5;
-  string team = 6;
+  ironledger.common.Sex sex = 3;
+  string team = 4;
 }
 
 message CreateAthleteResponse {
@@ -67,10 +65,8 @@ message UpdateAthleteRequest {
   string athlete_id = 1;
   string name = 2;
   double body_weight_kg = 3;
-  string sex = 4;
-  string weight_class = 5;
-  string division = 6;
-  string team = 7;
+  ironledger.common.Sex sex = 4;
+  string team = 5;
 }
 
 message UpdateAthleteResponse {

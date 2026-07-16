@@ -1,0 +1,11 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "IronLedger.Contracts.Common";
+
+package ironledger.common;
+
+enum Sex {
+  SEX_UNSPECIFIED = 0;
+  SEX_MALE = 1;
+  SEX_FEMALE = 2;
+}
