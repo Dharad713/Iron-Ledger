@@ -2,5 +2,5 @@
 
 public class MeetService : Contracts.Meets.MeetService.MeetServiceBase
 {
-    
+
 }

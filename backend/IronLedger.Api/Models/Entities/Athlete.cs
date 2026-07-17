@@ -1,5 +1,6 @@
 ﻿namespace IronLedger.Api.Models.Entities;
 
+
 public class Athlete
 {
     public Guid AthleteId { get; set; }

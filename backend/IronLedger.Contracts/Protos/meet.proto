@@ -40,7 +40,7 @@ service MeetService {
 message MeetMessage {
   string meet_id = 1;
   string meet_name = 2;
-  google.protobuf.Timestamp date = 3;
+  ironledger.common.Date date = 3;
   string location = 4;
   string federation = 5;
   EquipmentStatus equipment_status = 6;
@@ -54,7 +54,7 @@ message MeetMessage {
 
 message CreateMeetRequest {
   string meet_name = 1;
-  google.protobuf.Timestamp date = 2;
+  ironledger.common.Date date = 2;
   string location = 3;
   string federation = 4;
   EquipmentStatus equipment_status = 5;
@@ -100,7 +100,7 @@ message ListMeetsResponse {
 message UpdateMeetRequest {
   string meet_id = 1;
   string meet_name = 2;
-  google.protobuf.Timestamp date = 3;
+  ironledger.common.Date date = 3;
   string location = 4;
   string federation = 5;
   EquipmentStatus equipment_status = 6;
