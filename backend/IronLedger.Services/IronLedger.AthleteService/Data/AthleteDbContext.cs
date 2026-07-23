@@ -10,7 +10,7 @@ public class AthleteDbContext : DbContext
         : base(options)
     {
     }
-    
+
     public DbSet<Athlete> Athletes { get; set; } = null!;
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

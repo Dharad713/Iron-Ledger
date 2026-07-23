@@ -10,5 +10,5 @@ public class Athlete
     public required Sex Sex { get; set; }
     public required DateOnly DateOfBirth { get; set; }
     public string? Team { get; set; }
-    public bool IsArchived { get; set; } 
+    public bool IsArchived { get; set; }
 }
