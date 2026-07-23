@@ -8,7 +8,7 @@ public class Athlete
     public required string Name { get; set; }
     public required decimal BodyWeightKg { get; set; }
     public required Sex Sex { get; set; }
-    public required Date DateOfBirth { get; set; }
+    public required DateOnly DateOfBirth { get; set; }
     public string? Team { get; set; }
     public bool IsArchived { get; set; } 
 }

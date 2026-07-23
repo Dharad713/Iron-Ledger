@@ -12,4 +12,12 @@ public class AthleteDbContext : DbContext
     }
     
     public DbSet<Athlete> Athletes { get; set; } = null!;
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<Athlete>()
+            .Property(a => a.BodyWeightKg)
+            .HasPrecision(6, 2);
+    }
 }

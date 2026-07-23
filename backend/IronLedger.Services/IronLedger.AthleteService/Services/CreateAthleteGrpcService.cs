@@ -40,7 +40,10 @@ public class CreateAthleteGrpcService : Contracts.Athletes.AthleteService.Athlet
             Name = request.Name.Trim(),
             BodyWeightKg = (decimal)request.BodyWeightKg,
             Sex = request.Sex,
-            DateOfBirth = request.DateOfBirth,
+            DateOfBirth = new DateOnly(
+                request.DateOfBirth.Year,
+                request.DateOfBirth.Month,
+                request.DateOfBirth.Day),
             Team = StringToNullable(request.Team),
             IsArchived = false //you don't want to be able to make a new athlete start as archived
         };
@@ -53,7 +56,12 @@ public class CreateAthleteGrpcService : Contracts.Athletes.AthleteService.Athlet
             AthleteId = athlete.AthleteId.ToString(),
             Name = athlete.Name,
             BodyWeightKg = (double)athlete.BodyWeightKg,
-            DateOfBirth = athlete.DateOfBirth,
+            DateOfBirth = new Contracts.Common.Date
+            {
+                Year = athlete.DateOfBirth.Year,
+                Month = athlete.DateOfBirth.Month,
+                Day = athlete.DateOfBirth.Day
+            },
             Sex = athlete.Sex,
             Team = athlete.Team ?? string.Empty,
             IsArchived = athlete.IsArchived
