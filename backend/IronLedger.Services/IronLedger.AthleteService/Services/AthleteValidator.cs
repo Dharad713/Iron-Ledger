@@ -42,4 +42,17 @@ public class AthleteValidator
         }
 
     }
+
+    public static Guid ValidateAndParseAthleteId(string athleteId)
+    {
+        if (!Guid.TryParse(athleteId, out Guid parsedAthleteId))
+        {
+            throw new RpcException(
+                new Status(
+                    StatusCode.InvalidArgument,
+                    "Athlete ID must be a valid GUID."));
+        }
+
+        return parsedAthleteId;
+    }
 }

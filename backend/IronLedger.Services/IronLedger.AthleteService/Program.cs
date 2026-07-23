@@ -11,6 +11,7 @@ builder.Services.AddDbContext<AthleteDbContext>(options =>
 // Add services to the container.
 builder.Services.AddGrpc();
 builder.Services.AddScoped<AthleteCommandHandler>();
+builder.Services.AddScoped<AthleteQueryHandler>();
 
 var app = builder.Build();
 

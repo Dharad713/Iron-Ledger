@@ -12,6 +12,7 @@ service AthleteService {
   rpc ListAthletes(ListAthletesRequest) returns (ListAthletesResponse);
   rpc UpdateAthlete(UpdateAthleteRequest) returns (UpdateAthleteResponse);
   rpc ArchiveAthlete(ArchiveAthleteRequest) returns (ArchiveAthleteResponse);
+  rpc RestoreAthlete(RestoreAthleteRequest) returns (RestoreAthleteResponse);
 }
 
 message AthleteMessage {
@@ -82,4 +83,14 @@ message ArchiveAthleteRequest {
 
 message ArchiveAthleteResponse {
   bool success = 1;
+  bool already_archived = 2;
+}
+
+message RestoreAthleteRequest {
+  string athlete_id = 1;
+}
+
+message RestoreAthleteResponse {
+  bool success = 1;
+  bool already_active = 2;
 }
