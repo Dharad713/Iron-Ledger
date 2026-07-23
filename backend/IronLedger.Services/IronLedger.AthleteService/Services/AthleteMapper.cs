@@ -2,7 +2,7 @@
 using IronLedger.Contracts.Athletes;
 using ContractDate = IronLedger.Contracts.Common.Date;
 
-namespace IronLedger.AthleteService.Mappings;
+namespace IronLedger.AthleteService.Services;
 
 public static class AthleteMapper
 {

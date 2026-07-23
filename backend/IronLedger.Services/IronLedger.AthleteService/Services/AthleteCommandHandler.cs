@@ -1,6 +1,5 @@
 ﻿using Grpc.Core;
 using IronLedger.AthleteService.Data;
-using IronLedger.AthleteService.Mappings;
 using IronLedger.AthleteService.Models;
 using IronLedger.AthleteService.Validation;
 using IronLedger.Contracts.Athletes;
