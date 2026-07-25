@@ -39,7 +39,7 @@ public class AthleteValidator
     }
 
     public static void ValidateDateOfBirth(
-        IronLedger.Contracts.Common.Date? dateOfBirth)
+        Date? dateOfBirth)
     {
         if (dateOfBirth is null)
         {
