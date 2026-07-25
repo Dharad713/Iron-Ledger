@@ -9,12 +9,8 @@ The main purpose of this project is not to build a production-ready powerlifting
 
 # Todo/Ideas:
 - Judging light options: see USAPL [rulebook](https://www.usapowerlifting.com/assets/general/PDFs/USAPL-Rulebook-v2026.1-Final-with-markups.pdf) section 2.10
-- Make API Calls asynchronous
 - Make a Leaderboard ( Add Dots, Overall total, Weightclass Total, Gender Total, Weightclass Dot, etc) see https://www.openpowerlifting.org/rankings/raw
-- Add age classes and make enums for weight and age classes 
-- Should there be federation classes and if so should those have meet templates
-  - Meets should have a list of valid weight classes that athletes need to be in
-    - there needs to be a validation for athletes signing up
+- Add list athletes to MeetService?
 
 
 ## Current Architecture Goal
@@ -25,7 +21,7 @@ The main purpose of this project is not to build a production-ready powerlifting
                               │ HTTP/JSON
                               ▼
                      ┌──────────────────┐
-                     │ API Gateway  │
+                     │ API Gateway      │
                      └────────┬─────────┘
                               │ gRPC
           ┌───────────────────┼───────────────────┐
