@@ -1,7 +1,8 @@
-﻿using Grpc.Core;
+﻿using System.ComponentModel.DataAnnotations;
+using Grpc.Core;
 using IronLedger.AthleteService.Data;
 using IronLedger.AthleteService.Models;
-using IronLedger.AthleteService.Validation;
+using IronLedger.AthleteService.Services.Validation;
 using IronLedger.Contracts.Athletes;
 using Microsoft.EntityFrameworkCore;
 
@@ -36,9 +37,9 @@ public class AthleteCommandHandler
         };
     }
 
-        public async Task<ArchiveAthleteResponse> ArchiveAthlete(
-        ArchiveAthleteRequest request,
-        CancellationToken cancellationToken)
+    public async Task<ArchiveAthleteResponse> ArchiveAthlete(
+    ArchiveAthleteRequest request,
+    CancellationToken cancellationToken)
     {
         Guid athleteId = AthleteValidator.ValidateAndParseAthleteId(request.AthleteId);
 
@@ -74,7 +75,7 @@ public class AthleteCommandHandler
             AlreadyArchived = false
         };
     }
-    
+
     public async Task<RestoreAthleteResponse> RestoreAthlete(
         RestoreAthleteRequest request,
         CancellationToken cancellationToken)
@@ -111,6 +112,50 @@ public class AthleteCommandHandler
         {
             Success = true,
             AlreadyActive = false
+        };
+    }
+    public async Task<UpdateAthleteResponse> UpdateAthlete(
+        UpdateAthleteRequest request,
+        CancellationToken cancellationToken)
+    {
+        Guid athleteId = AthleteValidator.ValidateAndParseAthleteId(request.AthleteId);
+
+        Athlete? athlete = await _dbContext.Athletes
+            .SingleOrDefaultAsync(a => a.AthleteId == athleteId, cancellationToken);
+
+        if (athlete is null)
+        {
+            throw new RpcException(
+                new Status(StatusCode.NotFound, "Athlete not found."));
+        }
+
+
+        if (request.HasName)
+        {
+            AthleteValidator.ValidateName(request.Name);
+            athlete.Name = request.Name.Trim();
+        }
+        if (request.HasBodyWeightKg)
+        {
+            AthleteValidator.ValidateBodyWeight(request.BodyWeightKg);
+            athlete.BodyWeightKg = (decimal)request.BodyWeightKg;
+        }
+        if (request.HasSex)
+        {
+            AthleteValidator.ValidateSex(request.Sex);
+            athlete.Sex = request.Sex;
+        }
+        if (request.HasTeam)
+        {
+            athlete.Team = request.Team.Trim();
+        }
+
+        _dbContext.Athletes.Update(athlete);
+        await _dbContext.SaveChangesAsync(cancellationToken);
+
+        return new UpdateAthleteResponse()
+        {
+            Athlete = AthleteMapper.ToMessage(athlete)
         };
     }
 }

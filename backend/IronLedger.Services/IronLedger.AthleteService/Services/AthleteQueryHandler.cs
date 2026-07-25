@@ -1,8 +1,8 @@
 ﻿using Grpc.Core;
 using IronLedger.AthleteService.Data;
 using IronLedger.AthleteService.Models;
-using IronLedger.AthleteService.Validation;
 using IronLedger.Contracts.Athletes;
+using IronLedger.AthleteService.Services.Validation;
 using Microsoft.EntityFrameworkCore;
 
 namespace IronLedger.AthleteService.Services;
@@ -40,17 +40,17 @@ public class AthleteQueryHandler
             Athlete = AthleteMapper.ToMessage(athlete)
         };
     }
-    
+
     public async Task<GetAthletesByIdsResponse> GetAthletesByIds(
         GetAthletesByIdsRequest request,
         CancellationToken cancellationToken)
     {
-        List<Guid> athleteIds =  request.AthleteIds.Select(Guid.Parse).ToList();
-        
+        List<Guid> athleteIds = request.AthleteIds.Select(Guid.Parse).ToList();
+
         var athletes = await _dbContext.Athletes
             .Where(a => athleteIds.Contains(a.AthleteId))
             .ToListAsync();
-        
+
         var response = new GetAthletesByIdsResponse();
         response.Athletes.AddRange(
             athletes.Select(AthleteMapper.ToMessage)

@@ -35,7 +35,7 @@ public class AthleteGrpcService : Contracts.Athletes.AthleteService.AthleteServi
             request,
             context.CancellationToken);
     }
-    
+
     public override Task<GetAthletesByIdsResponse> GetAthletesByIds(
         GetAthletesByIdsRequest request,
         ServerCallContext context)
@@ -44,7 +44,14 @@ public class AthleteGrpcService : Contracts.Athletes.AthleteService.AthleteServi
             request,
             context.CancellationToken);
     }
-    
+
+    public override Task<UpdateAthleteResponse> UpdateAthlete(UpdateAthleteRequest request, ServerCallContext context)
+    {
+        return _commandHandler.UpdateAthlete(
+            request,
+            context.CancellationToken);
+    }
+
     public override Task<ArchiveAthleteResponse> ArchiveAthlete(
         ArchiveAthleteRequest request,
         ServerCallContext context)
@@ -53,7 +60,7 @@ public class AthleteGrpcService : Contracts.Athletes.AthleteService.AthleteServi
             request,
             context.CancellationToken);
     }
-    
+
     public override Task<RestoreAthleteResponse> RestoreAthlete(
         RestoreAthleteRequest request,
         ServerCallContext context)

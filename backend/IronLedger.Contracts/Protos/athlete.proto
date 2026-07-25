@@ -66,11 +66,11 @@ message ListAthletesResponse {
 
 message UpdateAthleteRequest {
   string athlete_id = 1;
-  string name = 2;
-  double body_weight_kg = 3;
-  ironledger.common.Sex sex = 4;
-  string team = 5;
-  ironledger.common.Date date_of_birth = 6;
+  optional string name = 2;
+  optional double body_weight_kg = 3;
+  optional ironledger.common.Sex sex = 4;
+  optional string team = 5;
+  optional ironledger.common.Date date_of_birth = 6;
 }
 
 message UpdateAthleteResponse {
