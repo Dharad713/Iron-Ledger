@@ -36,6 +36,15 @@ public class AthleteGrpcService : Contracts.Athletes.AthleteService.AthleteServi
             context.CancellationToken);
     }
     
+    public override Task<GetAthletesByIdsResponse> GetAthletesByIds(
+        GetAthletesByIdsRequest request,
+        ServerCallContext context)
+    {
+        return _queryHandler.GetAthletesByIds(
+            request,
+            context.CancellationToken);
+    }
+    
     public override Task<ArchiveAthleteResponse> ArchiveAthlete(
         ArchiveAthleteRequest request,
         ServerCallContext context)

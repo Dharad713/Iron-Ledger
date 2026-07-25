@@ -41,5 +41,21 @@ public class AthleteQueryHandler
         };
     }
     
+    public async Task<GetAthletesByIdsResponse> GetAthletesByIds(
+        GetAthletesByIdsRequest request,
+        CancellationToken cancellationToken)
+    {
+        List<Guid> athleteIds =  request.AthleteIds.Select(Guid.Parse).ToList();
+        
+        var athletes = await _dbContext.Athletes
+            .Where(a => athleteIds.Contains(a.AthleteId))
+            .ToListAsync();
+        
+        var response = new GetAthletesByIdsResponse();
+        response.Athletes.AddRange(
+            athletes.Select(AthleteMapper.ToMessage)
+        );
 
+        return response;
+    }
 }
