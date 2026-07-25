@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Grpc.Core;
+﻿using Grpc.Core;
 using IronLedger.AthleteService.Data;
 using IronLedger.AthleteService.Models;
 using IronLedger.AthleteService.Services.Validation;
