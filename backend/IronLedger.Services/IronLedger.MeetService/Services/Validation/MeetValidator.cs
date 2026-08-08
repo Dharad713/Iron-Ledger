@@ -1,6 +1,6 @@
 ﻿namespace IronLedger.MeetService.Services.Validation;
 
-public class MeetValidation
+public class MeetValidator
 {
-    
+
 }

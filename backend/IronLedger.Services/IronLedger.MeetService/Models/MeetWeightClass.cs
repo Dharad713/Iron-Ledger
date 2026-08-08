@@ -9,6 +9,6 @@ public class MeetWeightClass
     public required string WeightClassName { get; set; }
     public required Sex Sex { get; set; }
 
-    public decimal? MinimumWeightKg { get; set; }
-    public decimal? MaximumWeightKg { get; set; }
+    public decimal MinimumWeightKg { get; set; }
+    public decimal MaximumWeightKg { get; set; }
 }

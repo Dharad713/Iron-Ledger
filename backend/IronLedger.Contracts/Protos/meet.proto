@@ -259,6 +259,7 @@ enum MeetStatus {
   MEET_STATUS_ACTIVE = 4;
   MEET_STATUS_COMPLETED = 5;
   MEET_STATUS_CANCELLED = 6;
+  MEET_STATUS_ARCHIVED = 7;
 }
 
 enum EquipmentStatus {

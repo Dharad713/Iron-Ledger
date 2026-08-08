@@ -10,6 +10,6 @@ public class MeetDbContext : DbContext
         : base(options)
     {
     }
-    
+
     public DbSet<Meet> Meets { get; set; } = null!;
 }

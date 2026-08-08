@@ -3,11 +3,11 @@ using IronLedger.Contracts.Meets;
 
 namespace IronLedger.MeetService.Services;
 
-public class MeetGrpcService: Contracts.Meets.MeetService.MeetServiceBase
+public class MeetGrpcService : Contracts.Meets.MeetService.MeetServiceBase
 {
     private readonly MeetCommandHandler _commandHandler;
     private readonly MeetQueryHandler _queryHandler;
-    
+
     public MeetGrpcService(
         MeetCommandHandler commandHandler,
         MeetQueryHandler queryHandler)
@@ -15,7 +15,7 @@ public class MeetGrpcService: Contracts.Meets.MeetService.MeetServiceBase
         _commandHandler = commandHandler;
         _queryHandler = queryHandler;
     }
-    
+
     public override Task<CreateMeetResponse> CreateMeet(
         CreateMeetRequest request,
         ServerCallContext context)
@@ -24,5 +24,5 @@ public class MeetGrpcService: Contracts.Meets.MeetService.MeetServiceBase
             request,
             context.CancellationToken);
     }
-    
+
 }

@@ -7,7 +7,7 @@ public enum MeetStatus
     Draft,
     RegistrationOpen,
     RegistrationClosed,
-    Archive,
+    Archived,
     Completed,
     Cancelled,
     Active,

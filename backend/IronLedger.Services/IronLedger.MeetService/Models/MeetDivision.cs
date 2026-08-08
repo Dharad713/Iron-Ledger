@@ -9,6 +9,6 @@ public class MeetDivision
     public required string MeetDivisionName { get; set; }
     public required Sex Sex { get; set; }
 
-    public int? MinimumAge { get; set; }
-    public int? MaximumAge { get; set; }
+    public int MinimumAge { get; set; }
+    public int MaximumAge { get; set; }
 }
